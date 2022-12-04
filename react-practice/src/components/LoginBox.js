@@ -12,8 +12,19 @@ export default function LoginBox() {
     pw: "",
   });
 
+  const isButtonDisabled =
+    userInput.id.length === 0 || userInput.pw.length === 0;
+
   const handleClickButton = () => {
-    alert("test");
+    if (userInput.id.length < 6) {
+      return;
+    }
+
+    if (userInput.pw.length < 6) {
+      return;
+    }
+
+    alert("환영합니다" + userInput.id + "님!");
   };
 
   const handleChangeIdInput = event => {
@@ -42,14 +53,8 @@ export default function LoginBox() {
           text="로그인"
           width="100%"
           color="white"
-          // onClick={
-          //   (idInputValue.length > 6
-          //     ? (setIsIdPassed = true)
-          //     : alert("아이디는 6자리 이상이어야 합니다.")) &&
-          //   (pwInputValue.length > 6
-          //     ? (setIsPwPassed = true)
-          //     : alert("비밀번호는 6자리 이상이어야 합니다."))
-          // }
+          disabled={isButtonDisabled}
+          onClick={handleClickButton}
         />
       </div>
       <div>© 2018 COPYRIGHT © ROST.ALL RIGHTS RESERVED.</div>
