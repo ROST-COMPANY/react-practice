@@ -1,10 +1,16 @@
 /** @jsxRuntime classic */
 /** @jsx jsx */
+import { useState } from "react";
 import { jsx, css } from "@emotion/react";
 import Button from "./Button";
 import IdInput from "./IdInput";
+import PwInput from "./PwInput";
 
 export default function LoginBox() {
+  // const [isIdPassed, setIsIdPassed] = useState(false);
+  // const [isPwPassed, setIsPwPassed] = useState(false);
+  // const idInputValue = idInput.value;
+  // const pwInputValue = pwInput.value;
   const handleClickButton = () => {
     alert("test");
   };
@@ -15,13 +21,20 @@ export default function LoginBox() {
         <img css={imgCss} alt="logo" src="/RostLogo.png" />
         <div css={inputWrapperCss}>
           <IdInput />
-          <div>input</div>
+          <PwInput />
         </div>
         <Button
           text="로그인"
           width="100%"
           color="white"
-          onClick={handleClickButton}
+          // onClick={
+          //   (idInputValue.length > 6
+          //     ? (setIsIdPassed = true)
+          //     : alert("아이디는 6자리 이상이어야 합니다.")) &&
+          //   (pwInputValue.length > 6
+          //     ? (setIsPwPassed = true)
+          //     : alert("비밀번호는 6자리 이상이어야 합니다."))
+          // }
         />
       </div>
       <div>© 2018 COPYRIGHT © ROST.ALL RIGHTS RESERVED.</div>
@@ -44,7 +57,7 @@ const loginBoxCss = css`
   justify-content: center;
   align-items: center;
   gap: 25px;
-  width: 350px;
+  width: 400px;
   padding: 20px;
   border: 1px solid #b5b5b5;
   border-radius: 8px;
