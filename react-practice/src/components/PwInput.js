@@ -2,11 +2,17 @@
 /** @jsx jsx */
 import { jsx, css } from "@emotion/react";
 
-export default function PwInput() {
+export default function PwInput({ onChange, value }) {
   return (
     <div css={wrapperCss}>
       <img css={iconCss} alt="pwIcon" src="pwIcon.png" />
-      <input css={inputCss} type="password" placeholder="비밀번호" />
+      <input
+        css={inputCss}
+        type="password"
+        placeholder="비밀번호"
+        onChange={onChange}
+        value={value}
+      />
       <div css={guideTextCss}>영문,숫자 조합, 8~12자리</div>
     </div>
   );

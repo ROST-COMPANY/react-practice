@@ -22,6 +22,12 @@ export default function LoginBox() {
     });
   };
 
+  const handleChangePwInput = event => {
+    setUserInput(prev => {
+      return { id: prev.id, pw: event.target.value };
+    });
+  };
+
   console.log(userInput);
 
   return (
@@ -29,8 +35,8 @@ export default function LoginBox() {
       <div css={loginBoxCss}>
         <img css={imgCss} alt="logo" src="/RostLogo.png" />
         <div css={inputWrapperCss}>
-          <IdInput vaule={userInput.id} onChange={handleChangeIdInput} />
-          <PwInput />
+          <IdInput value={userInput.id} onChange={handleChangeIdInput} />
+          <PwInput value={userInput.pw} onChange={handleChangePwInput} />
         </div>
         <Button
           text="로그인"
