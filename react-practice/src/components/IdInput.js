@@ -2,11 +2,17 @@
 /** @jsx jsx */
 import { jsx, css } from "@emotion/react";
 
-export default function IdInput() {
+export default function IdInput({ value, onChange }) {
   return (
     <div css={wrapperCss}>
       <img css={iconCss} alt="idIcon" src="idIcon.png" />
-      <input css={inputCss} type="text" placeholder="아이디" />
+      <input
+        css={inputCss}
+        type="text"
+        value={value}
+        placeholder="아이디"
+        onChange={onChange}
+      />
       <div css={guideTextCss}>이메일 입력</div>
     </div>
   );

@@ -7,20 +7,29 @@ import IdInput from "./IdInput";
 import PwInput from "./PwInput";
 
 export default function LoginBox() {
-  // const [isIdPassed, setIsIdPassed] = useState(false);
-  // const [isPwPassed, setIsPwPassed] = useState(false);
-  // const idInputValue = idInput.value;
-  // const pwInputValue = pwInput.value;
+  const [userInput, setUserInput] = useState({
+    id: "",
+    pw: "",
+  });
+
   const handleClickButton = () => {
     alert("test");
   };
+
+  const handleChangeIdInput = event => {
+    setUserInput(prev => {
+      return { id: event.target.value, pw: prev.pw };
+    });
+  };
+
+  console.log(userInput);
 
   return (
     <div css={wrapperCss}>
       <div css={loginBoxCss}>
         <img css={imgCss} alt="logo" src="/RostLogo.png" />
         <div css={inputWrapperCss}>
-          <IdInput />
+          <IdInput vaule={userInput.id} onChange={handleChangeIdInput} />
           <PwInput />
         </div>
         <Button
