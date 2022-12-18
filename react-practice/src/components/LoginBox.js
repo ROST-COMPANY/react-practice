@@ -3,8 +3,7 @@
 import { useState } from "react";
 import { jsx, css } from "@emotion/react";
 import Button from "./Button";
-import IdInput from "./IdInput";
-import PwInput from "./PwInput";
+import Input from "./Input";
 
 export default function LoginBox({ setIsVisible }) {
   const [userInput, setUserInput] = useState({
@@ -47,8 +46,24 @@ export default function LoginBox({ setIsVisible }) {
       <div css={loginBoxCss}>
         <img css={imgCss} alt="logo" src="/RostLogo.png" />
         <div css={inputWrapperCss}>
-          <IdInput value={userInput.id} onChange={handleChangeIdInput} />
-          <PwInput value={userInput.pw} onChange={handleChangePwInput} />
+          <Input
+            iconSrc="idIcon.png"
+            iconAlt="idIcon"
+            inputType="text"
+            placeholder="아이디"
+            value={userInput.id}
+            guideText="이메일 입력"
+            onChange={handleChangeIdInput}
+          />
+          <Input
+            iconSrc="pwIcon.png"
+            iconAlt="pwIcon"
+            inputType="password"
+            placeholder="비밀번호"
+            value={userInput.pw}
+            guideText="영문,숫자 조합, 8~12자리"
+            onChange={handleChangePwInput}
+          />
         </div>
         <Button
           text="로그인"
