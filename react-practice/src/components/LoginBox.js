@@ -24,8 +24,12 @@ export default function LoginBox() {
       return;
     }
 
-    alert("환영합니다" + userInput.id + "님!");
+    alert("환영합니다 " + userInput.id + " 님!");
   };
+
+  // function ModalPage() {
+  //   return <Modal visible={true}>hello</Modal>;
+  // }
 
   const handleChangeIdInput = event => {
     setUserInput(prev => {

@@ -1,7 +1,7 @@
 /** @jsxRuntime classic */
 /** @jsx jsx */
 import { jsx, css } from "@emotion/react";
-import React from "react";
+// import React from "react";
 import { useNavigate } from "react-router-dom";
 
 export default function Main() {
