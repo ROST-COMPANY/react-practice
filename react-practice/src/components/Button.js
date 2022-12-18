@@ -2,17 +2,24 @@
 /** @jsx jsx */
 import { jsx, css } from "@emotion/react";
 
-export default function Button({ text, width, color, disabled, onClick }) {
+export default function Button({
+  text,
+  width = "100%",
+  height = "50px",
+  color,
+  disabled,
+  onClick,
+}) {
   return (
-    <button css={buttonCss(width, color, disabled)} onClick={onClick}>
+    <button css={buttonCss(width, height, color, disabled)} onClick={onClick}>
       {text}
     </button>
   );
 }
 
-const buttonCss = (width, color, disabled) => css`
+const buttonCss = (width, height, color, disabled) => css`
   width: ${width};
-  height: 50px;
+  height: ${height};
   border: none;
   border-radius: 8px;
   color: ${color};

@@ -6,7 +6,7 @@ import Button from "./Button";
 import IdInput from "./IdInput";
 import PwInput from "./PwInput";
 
-export default function LoginBox() {
+export default function LoginBox({ setIsVisible }) {
   const [userInput, setUserInput] = useState({
     id: "",
     pw: "",
@@ -24,12 +24,9 @@ export default function LoginBox() {
       return;
     }
 
-    alert("환영합니다 " + userInput.id + " 님!");
+    setIsVisible(() => true);
+    // alert("환영합니다 " + userInput.id + " 님!");
   };
-
-  // function ModalPage() {
-  //   return <Modal visible={true}>hello</Modal>;
-  // }
 
   const handleChangeIdInput = event => {
     setUserInput(prev => {
@@ -43,7 +40,7 @@ export default function LoginBox() {
     });
   };
 
-  console.log(userInput);
+  // console.log(userInput);
 
   return (
     <div css={wrapperCss}>

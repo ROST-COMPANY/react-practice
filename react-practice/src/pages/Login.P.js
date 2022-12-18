@@ -1,37 +1,23 @@
 /** @jsxRuntime classic */
 /** @jsx jsx */
 import { jsx, css } from "@emotion/react";
-import LoginBox from "../components/LoginBox";
 import { useState } from "react";
+import LoginBox from "../components/LoginBox";
 import Modal from "../components/Modal";
 
 export default function Login() {
-  const [modalVisible, setModalVisible] = useState(false);
-  const openModal = () => {
-    setModalVisible(true);
-  };
-  const closeModal = () => {
-    setModalVisible(false);
-  };
+  const [isVisible, setIsVisible] = useState(false);
 
   return (
-    <>
-      {/* <div css={loginCss}>
-        <LoginBox />
-      </div> */}
-
-      <button onClick={openModal}>Open Modal</button>
-      {modalVisible && (
-        <Modal
-          visible={modalVisible}
-          closable={true}
-          maskClosable={true}
-          onClose={closeModal}
-        >
-          Hello
-        </Modal>
-      )}
-    </>
+    <div css={loginCss}>
+      <Modal
+        isVisible={isVisible}
+        title="로그인 성공"
+        content="환영합니다!!"
+        setIsVisible={setIsVisible}
+      />
+      <LoginBox setIsVisible={setIsVisible} />
+    </div>
   );
 }
 
