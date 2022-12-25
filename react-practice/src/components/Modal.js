@@ -2,11 +2,15 @@
 /** @jsx jsx */
 import { jsx, css } from "@emotion/react";
 import React from "react";
+import { useDispatch } from "react-redux";
+import { setIsModalVisible } from "../redux/slices/loginSlice";
 import Button from "./Button";
 
-export default function Modal({ title, content, isVisible, setIsVisible }) {
+export default function Modal({ title, content, isVisible }) {
+  const dispatch = useDispatch();
+
   const handleClickClose = () => {
-    setIsVisible(() => false);
+    dispatch(setIsModalVisible(false));
   };
 
   return (

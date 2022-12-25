@@ -1,42 +1,35 @@
 /** @jsxRuntime classic */
 /** @jsx jsx */
-import { useState } from "react";
 import { jsx, css } from "@emotion/react";
 import Button from "./Button";
 import Input from "./Input";
+import { useDispatch, useSelector } from "react-redux";
+import { setId, setIsModalVisible, setPw } from "../redux/slices/loginSlice";
 
-export default function LoginBox({ setIsVisible }) {
-  const [userInput, setUserInput] = useState({
-    id: "",
-    pw: "",
-  });
+export default function LoginBox() {
+  const dispatch = useDispatch();
+  const { id, pw } = useSelector(state => state.login.userInput);
 
-  const isButtonDisabled =
-    userInput.id.length === 0 || userInput.pw.length === 0;
+  const isButtonDisabled = id.length === 0 || pw.length === 0;
 
   const handleClickButton = () => {
-    if (userInput.id.length < 6) {
+    if (id.length < 6) {
+      return;
+    }
+    if (pw.length < 6) {
       return;
     }
 
-    if (userInput.pw.length < 6) {
-      return;
-    }
-
-    setIsVisible(() => true);
+    dispatch(setIsModalVisible(true));
     // alert("환영합니다 " + userInput.id + " 님!");
   };
 
   const handleChangeIdInput = event => {
-    setUserInput(prev => {
-      return { id: event.target.value, pw: prev.pw };
-    });
+    dispatch(setId(event.target.value));
   };
 
   const handleChangePwInput = event => {
-    setUserInput(prev => {
-      return { id: prev.id, pw: event.target.value };
-    });
+    dispatch(setPw(event.target.value));
   };
 
   // console.log(userInput);
@@ -51,7 +44,7 @@ export default function LoginBox({ setIsVisible }) {
             iconAlt="idIcon"
             inputType="text"
             placeholder="아이디"
-            value={userInput.id}
+            value={id}
             guideText="이메일 입력"
             onChange={handleChangeIdInput}
           />
@@ -60,7 +53,7 @@ export default function LoginBox({ setIsVisible }) {
             iconAlt="pwIcon"
             inputType="password"
             placeholder="비밀번호"
-            value={userInput.pw}
+            value={pw}
             guideText="영문,숫자 조합, 8~12자리"
             onChange={handleChangePwInput}
           />
