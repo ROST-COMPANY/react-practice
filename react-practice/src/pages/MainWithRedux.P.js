@@ -1,30 +1,23 @@
 /** @jsxRuntime classic */
 /** @jsx jsx */
 import { jsx, css } from "@emotion/react";
-import { string } from "prop-types";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { setTodos } from "../redux/slices/todoSlice";
 
-export default function Main() {
-  const [todos, setTodos] = useState([]);
+export default function MainWithRedux() {
+  const dispatch = useDispatch();
+  const { todos } = useSelector(state => state.todo);
 
   useEffect(() => {
     fetch("https://jsonplaceholder.typicode.com/todos?_limit=10")
       .then(res => res.json())
       .then(data => {
         console.log(data);
-
-        const newData = data.map(el => {
-          return {
-            ...el,
-            test: Math.round(Math.random()),
-          };
-        });
-
-        console.log(newData);
-
-        setTodos(() => newData);
+        dispatch(setTodos(data));
       });
   }, []);
+
   return (
     <div css={mainCss}>
       <ul>

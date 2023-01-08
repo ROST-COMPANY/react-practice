@@ -3,14 +3,17 @@
 import { jsx, css } from "@emotion/react";
 import React from "react";
 import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import { setIsModalVisible } from "../redux/slices/loginSlice";
 import Button from "./Button";
 
 export default function Modal({ title, content, isVisible }) {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const handleClickClose = () => {
     dispatch(setIsModalVisible(false));
+    navigate("/mainWithRedux");
   };
 
   return (

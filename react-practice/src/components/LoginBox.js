@@ -21,7 +21,6 @@ export default function LoginBox() {
     }
 
     dispatch(setIsModalVisible(true));
-    // alert("환영합니다 " + userInput.id + " 님!");
   };
 
   const handleChangeIdInput = event => {
